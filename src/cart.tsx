@@ -72,7 +72,7 @@ const cart: React.FC<HeadProps> = ({
       {cartList.length === 0 && (
         <div className=" emptyCart flex flex-col items-center pt-16">
           <img
-            src="/assets/images/illustration-empty-cart.svg"
+            src="./assets/images/illustration-empty-cart.svg"
             alt="empty-cart-illustration"
             style={{ width: "100px" }}
             className="pb-4"
