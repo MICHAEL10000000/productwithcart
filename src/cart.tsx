@@ -63,7 +63,9 @@ const cart: React.FC<HeadProps> = ({
                 </p>
               </div>
               <div className="flex justify-center bg-SCred text-white w-full py-2 rounded-full ">
-                <NavLink to="/OrderConfirmation">Confirm Order</NavLink>
+                <NavLink to="/productwithcart/OrderConfirmation">
+                  Confirm Order
+                </NavLink>
               </div>
             </div>
           </div>

@@ -32,21 +32,21 @@ const product: React.FC<Props> = ({
   productIndex,
 }) => {
   return (
-    <div className="relative">
+    <div className="relative productImage">
       <img
         src={imageMobile}
         alt="Product-image-mobile"
-        className="rounded-lg md:hidden"
+        className="rounded-lg md:hidden productShow  "
       />
       <img
         src={imageTab}
         alt="Product-image-tab"
-        className="hidden rounded-lg md:inline lg:hidden"
+        className="hidden rounded-lg md:inline lg:hidden productShow"
       />
       <img
         src={imageDesktop}
         alt="Product-image-desktop"
-        className="hidden rounded-lg lg:inline"
+        className="hidden rounded-lg lg:inline productShow"
       />
 
       <div>

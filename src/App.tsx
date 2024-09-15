@@ -7,28 +7,37 @@ import Cart from "./cart";
 import OrderConfirmation from "./orderConfirmation";
 
 function App() {
-  const [count, setCount] = useState(0);
   const [cartList, setcartList] = useState<number[]>([]);
   const [cartItemPrices, setcartItemPrices] = useState<number[]>([]);
   /* const cartList: number[] = []; */
 
   function addToCart(index: number) {
+    focusChnages(index);
+    setcartList([...cartList, index]); //Just working with the indexes
+    setcartItemPrices([...cartItemPrices, 1]);
+    document.querySelector(".emptyCart")?.classList.add("hidden");
+  }
+
+  function focusChnages(index: number) {
     const allAddToCart = document.querySelectorAll("#AddToCart");
     const allQuantityCounter = document.querySelectorAll("#quantityCounter"); //?
-    console.log(index, allAddToCart[index - 1]);
+    const allProductImages = document.querySelectorAll(".productImage");
+    allProductImages[index]
+      .querySelectorAll(".productShow")
+      .forEach((productShow) => {
+        productShow.classList.toggle("border-2");
+        productShow.classList.toggle("border-SCred");
+      });
+    console.log(allProductImages);
     allAddToCart[index]?.classList.toggle("hidden");
     allAddToCart[index]?.classList.toggle("flex");
     allQuantityCounter[index]?.classList.toggle("hidden");
     allQuantityCounter[index]?.classList.toggle("flex");
-    setcartList([...cartList, index]); //Just working with the indexes
-    setcartItemPrices([...cartItemPrices, 1]);
-    console.log(cartList.length);
-    document.querySelector(".emptyCart")?.classList.add("hidden");
   }
+
   function increaseQuantity(index: number) {
     const updatingcartItemPrices = [...cartItemPrices];
     updatingcartItemPrices[cartList.indexOf(index)] += 1;
-    console.log(updatingcartItemPrices[cartList.indexOf(index)]);
     setcartItemPrices(updatingcartItemPrices);
   }
   function decreaseQuantity(index: number) {
@@ -76,19 +85,11 @@ function App() {
     index: number
   ) {
     let updatingcartItemPrices = cartItemPrices.splice(
-      cartItemPrices[cartList.indexOf(index)],
+      cartItemPrices.indexOf(cartList.indexOf(index)),
       1
-    );
+    ); //From the index of the productindex in cartList-- getting same index in cartprice
     let updatedCartList = cartList.splice(cartList.indexOf(index), 1);
-
-    const allAddToCart = document.querySelectorAll("#AddToCart");
-    const allQuantityCounter = document.querySelectorAll("#quantityCounter");
-
-    allAddToCart[index]?.classList.toggle("hidden");
-    allAddToCart[index]?.classList.toggle("flex");
-    allQuantityCounter[index]?.classList.toggle("hidden");
-    allQuantityCounter[index]?.classList.toggle("flex");
-
+    focusChnages(index);
     setcartItemPrices(updatingcartItemPrices);
     setcartList(updatedCartList);
 
@@ -145,7 +146,7 @@ function App() {
       </div>
       <Routes>
         <Route
-          path="/OrderConfirmation"
+          path="/productwithcart/OrderConfirmation"
           element={
             <OrderConfirmation
               cartList={cartList}

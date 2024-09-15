@@ -102,7 +102,14 @@ const orderConfirmation: React.FC<Props> = ({
           </div>
         </div>
         <button className=" mt-4 bg-SCred text-white w-full py-3 rounded-full font-RedHat-SB">
-          <NavLink to="/productwithcart">Start New Order</NavLink>
+          <NavLink
+            /* onClick={() => {
+              window.location.reload();
+            }} */
+            to="/productwithcart"
+          >
+            Start New Order
+          </NavLink>
         </button>
       </div>
     </div>
