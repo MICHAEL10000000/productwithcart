@@ -38,6 +38,12 @@ const cart: React.FC<HeadProps> = ({
     }
   }, [cartItemPrices]);
 
+  function fixMainPage() {
+    const mainPage = document.querySelector(".main-page");
+    mainPage?.classList.add("fixed");
+    mainPage?.classList.add("top-0");
+  }
+
   return (
     <div className="py-4 bg-white px-6 mt-8 rounded-lg animate__animated animate__slideInLeft ">
       <h1 className="text-2xl font-RedHat-B text-SCred">
@@ -62,11 +68,15 @@ const cart: React.FC<HeadProps> = ({
                   <span className="font-RedHat-B">carbon-neutral</span> delivery
                 </p>
               </div>
-              <div className="flex justify-center bg-SCred text-white w-full py-2 rounded-full ">
-                <NavLink to="/productwithcart/OrderConfirmation">
+              <button className="flex justify-center bg-SCred text-white w-full py-2 rounded-full ">
+                <NavLink
+                  className={"block"}
+                  onClick={fixMainPage}
+                  to="/productwithcart/OrderConfirmation"
+                >
                   Confirm Order
                 </NavLink>
-              </div>
+              </button>
             </div>
           </div>
         )}

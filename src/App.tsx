@@ -98,64 +98,68 @@ function App() {
 
   return (
     <BrowserRouter>
-      <div className="App lg:relative px-6 lg:px-16 pt-6 pb-6 md:p-8 lg:flex gap-4">
-        <div>
-          <h1 className=" font-RedHat-B text-4xl mb-5">Dessert</h1>
-          <div className="products md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-6 ">
-            {data.map((datum, index) => (
-              <div
-                key={index}
-                className="animate__animated animate__slideInUp "
-              >
-                <Product
-                  imageMobile={datum.image.mobile}
-                  imageTab={datum.image.tablet}
-                  imageDesktop={datum.image.desktop}
-                  productCategory={datum.category}
-                  productName={datum.name}
-                  productPrice={datum.price}
-                  increaseQuantity={() => {
-                    increaseQuantity(data.indexOf(datum));
-                  }}
-                  decreaseQuantity={() => {
-                    decreaseQuantity(data.indexOf(datum));
-                  }}
-                  addToCart={() => {
-                    data.indexOf(datum);
-                    console.log("added", data.indexOf(datum));
-                    addToCart(data.indexOf(datum));
-                  }}
-                  cartItemPrices={cartItemPrices}
-                  cartList={cartList}
-                  productIndex={index}
-                />
-              </div>
-            ))}
+      <div className="App lg:relative px-6 lg:px-16 pt-6 pb-6 md:p-8 lg:flex lg:gap-4">
+        <div className="main-page">
+          <div>
+            <h1 className=" font-RedHat-B text-4xl mb-5">Dessert</h1>
+            <div className="products md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-6 ">
+              {data.map((datum, index) => (
+                <div
+                  key={index}
+                  className="animate__animated animate__slideInUp "
+                >
+                  <Product
+                    imageMobile={datum.image.mobile}
+                    imageTab={datum.image.tablet}
+                    imageDesktop={datum.image.desktop}
+                    productCategory={datum.category}
+                    productName={datum.name}
+                    productPrice={datum.price}
+                    increaseQuantity={() => {
+                      increaseQuantity(data.indexOf(datum));
+                    }}
+                    decreaseQuantity={() => {
+                      decreaseQuantity(data.indexOf(datum));
+                    }}
+                    addToCart={() => {
+                      data.indexOf(datum);
+                      console.log("added", data.indexOf(datum));
+                      addToCart(data.indexOf(datum));
+                    }}
+                    cartItemPrices={cartItemPrices}
+                    cartList={cartList}
+                    productIndex={index}
+                  />
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-        <div className="cart">
-          <Cart
-            setcartItemPrices={setcartItemPrices}
-            setcartList={setcartList}
-            cartList={cartList}
-            cartItemPrices={cartItemPrices}
-            removeProduct={removeProduct}
-            TotalPrice={TotalPrice}
-          />
-        </div>
-      </div>
-      <Routes>
-        <Route
-          path="/productwithcart/OrderConfirmation"
-          element={
-            <OrderConfirmation
+          <div className="cart">
+            <Cart
+              setcartItemPrices={setcartItemPrices}
+              setcartList={setcartList}
               cartList={cartList}
               cartItemPrices={cartItemPrices}
+              removeProduct={removeProduct}
               TotalPrice={TotalPrice}
             />
-          }
-        ></Route>
-      </Routes>
+          </div>
+        </div>
+      </div>
+      <div>
+        <Routes>
+          <Route
+            path="/productwithcart/OrderConfirmation"
+            element={
+              <OrderConfirmation
+                cartList={cartList}
+                cartItemPrices={cartItemPrices}
+                TotalPrice={TotalPrice}
+              />
+            }
+          ></Route>
+        </Routes>
+      </div>
     </BrowserRouter>
   );
 }
