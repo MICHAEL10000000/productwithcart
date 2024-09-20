@@ -98,8 +98,8 @@ function App() {
 
   return (
     <BrowserRouter>
-      <div className="App lg:relative px-6 lg:px-16 pt-6 pb-6 md:p-8 lg:flex lg:gap-4">
-        <div className="main-page">
+      <div className="App lg:relative px-6 lg:px-16 pt-6 pb-6 md:p-8 lg:flex gap-4">
+        <div className="main-page lg:flex lg:gap-4">
           <div>
             <h1 className=" font-RedHat-B text-4xl mb-5">Dessert</h1>
             <div className="products md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-6 ">

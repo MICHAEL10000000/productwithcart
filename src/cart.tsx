@@ -39,9 +39,11 @@ const cart: React.FC<HeadProps> = ({
   }, [cartItemPrices]);
 
   function fixMainPage() {
-    const mainPage = document.querySelector(".main-page");
-    mainPage?.classList.add("fixed");
-    mainPage?.classList.add("top-0");
+    if (window.innerWidth < 1024) {
+      const mainPage = document.querySelector(".main-page");
+      mainPage?.classList.add("fixed");
+      mainPage?.classList.add("top-0");
+    }
   }
 
   return (

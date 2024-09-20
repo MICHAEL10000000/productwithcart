@@ -16,15 +16,15 @@ const orderConfirmation: React.FC<Props> = ({
   TotalPrice,
 }) => {
   return (
-    <div className="flex flex-col justify-end w-full min-h-screen">
+    <div className="lg:absolute lg:top-1/2 lg:portrait:top-0  flex flex-col justify-end w-full min-h-screen">
       {" "}
       {/* flex min-h-screen fixed top-0 min-h-screen w-full*/}
       <div
         className=" fixed top-0 min-h-screen w-full"
         style={{ backgroundColor: "rgb(17, 24, 39, 0.7)", zIndex: "1" }}
       ></div>
-      <div className="flex justify-end items-center w-full">
-        <div className=" bg-white lg:absolute lg:top-1/2 lg:-translate-y-1/4 z-10 lg:rounded-xl w-full  px-6 pb-16 pt-9 rounded-t-xl ">
+      <div className="special-class  flex justify-end items-center w-full">
+        <div className=" bg-white lg:translate-x-3/4 lg:-translate-y-1/4 z-10 lg:rounded-xl w-full  px-6 pb-16 pt-9 rounded-t-xl ">
           <div>
             <img src={tick} alt="Order-confirm-icon" />
             <h1 className=" font-RedHat-B text-4xl mt-4 mb-2">
